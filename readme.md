@@ -5,7 +5,7 @@
 - [代码规范](https://github.com/ecomfe/spec)
 
 ## 设计稿
-![设计稿](images/design.png)
+![设计稿](files/design.png)
 
 ## 需求：
 * 最左侧为任务分类列表，支持查看所有任务或者查看某个分类下的所有任务
