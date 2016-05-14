@@ -1,8 +1,0 @@
-
-[1m   js\test.js[22m
-      1 |[90mconsole.log('test')[39m
-                            ^ Missing semicolon.
-      1 |[90mconsole.log('test')[39m
-         ^ 'console' is not defined.
-
-[31m>> [39m2 errors in 1 file
