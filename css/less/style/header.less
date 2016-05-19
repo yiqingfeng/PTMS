@@ -1,0 +1,54 @@
+@import url(mixins/global.less);
+.g-h{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 60px;
+	// padding: 19px 0 16px 14px;
+	border-bottom: @cborder;
+	background-color: #ddd;
+	.title{
+		margin: 19px 0 16px 14px;
+		font: 18px/1.4 tahoma,arial,'Hiragino Sans GB','Hiragino Sans GB W3','Microsoft Yahei';
+		color: #999;
+	}
+}
+
+.g-doc{
+	position: fixed;
+	top: 61px;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	min-width: 700px;
+	overflow-x: auto;
+	.m-tasks{
+		position: absolute;
+		top: 0;
+		height: 100%;
+	}
+	.m-cate-list{
+		left: 0;
+		width: 230px;
+		border-right: @cborder;
+		background-color: #f2f2f2;
+	}
+	.m-task-list{
+		left: 231px;
+		width: 230px;
+		border-right: @cborder;
+		// background-color: #fff;
+	}
+	.m-task{
+		left: 462px;
+		right: 0;
+		// background-color: #fff;
+	}
+	.app-c{
+		// position: relative;
+		width: 100%;
+		height: 100%;
+	}
+}
+

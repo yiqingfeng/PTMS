@@ -1,0 +1,117 @@
+/* 所有分类详情列表 */
+.app-cate-list {
+  position: relative;
+  height: 100%;
+}
+.app-cate-list .hide {
+  display: none;
+}
+.app-cate-list .destroy {
+  display: none;
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  width: 12px;
+  height: 12px;
+  background: url("../../images/x.png") no-repeat center center / 10px;
+}
+.app-cate-list .cates-top {
+  position: absolute;
+  top: 13px;
+  left: 0;
+  right: 0;
+  height: 76px;
+  font-size: 18px;
+}
+.app-cate-list .cates-top .task-counts {
+  margin: 12px 0 10px 12px;
+}
+.app-cate-list .cates-top .title {
+  margin-left: 12px;
+  font-weight: normal;
+  line-height: 33px;
+}
+.app-cate-list .cates {
+  box-sizing: border-box;
+  height: 100%;
+  padding-top: 89px;
+  padding-bottom: 45px;
+  font-size: 16px;
+}
+.app-cate-list .cates .cates-list {
+  max-height: 100%;
+  overflow-y: auto;
+  list-style-type: none;
+}
+.app-cate-list .cates .cate {
+  position: relative;
+  padding-left: 50px;
+  line-height: 28px;
+  background: url("../../images/folder.png") no-repeat 28px center / 16px;
+  cursor: pointer;
+}
+.app-cate-list .cates .cate span {
+  vertical-align: top;
+}
+.app-cate-list .cates .cate:hover {
+  background-color: #ccc;
+}
+.app-cate-list .cates .cate:hover .destroy {
+  display: block;
+}
+.app-cate-list .cates .cate-name {
+  display: inline-block;
+  max-width: 114px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.app-cate-list .cates .task-list {
+  list-style-type: none;
+}
+.app-cate-list .cates .task {
+  position: relative;
+  padding-left: 64px;
+  line-height: 28px;
+  background: url("../../images/file.png") no-repeat 44px center;
+  cursor: pointer;
+}
+.app-cate-list .cates .task span {
+  vertical-align: top;
+}
+.app-cate-list .cates .task:hover {
+  background-color: #fff;
+}
+.app-cate-list .cates .task:hover .destroy {
+  display: block;
+}
+.app-cate-list .cates .task-name {
+  display: inline-block;
+  max-width: 106px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.app-cate-list .add-cate {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 44px;
+  border-top: 1px solid #ccc;
+  background-color: #eee;
+}
+.app-cate-list .add-cate a {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-width: 0;
+  margin: 12px 10px 0 18px;
+  background: url("../../images/add-2.png") no-repeat center center;
+  cursor: pointer;
+}
+.app-cate-list .add-cate span {
+  font-size: 14px;
+  line-height: 20px;
+  vertical-align: text-bottom;
+}

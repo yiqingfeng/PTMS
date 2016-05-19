@@ -1,0 +1,28 @@
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+p,
+img,
+strong,
+ol,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+header,
+section {
+  display: block;
+}
+ul {
+  list-style-type: none;
+}

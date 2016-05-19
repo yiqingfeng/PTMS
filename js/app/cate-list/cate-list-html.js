@@ -1,0 +1,13 @@
+define(function(){
+
+return function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<div class="app-cate-list">\r\n\t<div class="cates-top">\r\n\t\t<div class="task-counts">所有任务（11）</div>\r\n\t\t<h3 class="title">分类列表</h3>\r\n\t</div>\r\n\t<div class="cates">\r\n\t\t<ul class="cates-list">\r\n\t\t\t<li class="cate-item">\r\n\t\t\t\t<div class="cate"><span class="cate-name" title="百度IFE项目百度IFE项目">百度IFE项目百度IFE项目</span><span>(10)</span><a href="javascript:;" class="destroy"></a></div>\r\n\t\t\t\t<ul class="task-list">\r\n\t\t\t\t\t<li class="task"><span class="task-name" title="任务一任务一任务一">任务一任务一任务一</span><span>(6)</span><a href="javascript:;" class="destroy"></a></li>\r\n\t\t\t\t\t<li class="task"><span class="task-name" title="任务二任务二任务二">任务二任务二任务二</span><span>(4)</span><a href="javascript:;" class="destroy"></a></li>\r\n\t\t\t\t</ul>\r\n\t\t\t</li>\r\n\t\t\t<li class="cate-item">\r\n\t\t\t\t<div class="cate"><span class="cate-name" title="百度IFE项目百度IFE项目">百度IFE项目百度IFE项目</span><span>(10)</span><a href="javascript:;" class="destroy"></a></div>\r\n\t\t\t\t<ul class="task-list hide">\r\n\t\t\t\t\t<li class="task"><span class="task-name" title="任务一任务一任务一">任务一任务一任务一</span><span>(6)</span><a href="javascript:;" class="destroy"></a></li>\r\n\t\t\t\t\t<li class="task"><span class="task-name" title="任务二任务二任务二">任务二任务二任务二</span><span>(4)</span><a href="javascript:;" class="destroy"></a></li>\r\n\t\t\t\t</ul>\r\n\t\t\t</li>\r\n\t\t\t<li class="cate-item">\r\n\t\t\t\t<div class="cate"><span class="cate-name" title="百度IFE项目百度IFE项目">百度IFE项目百度IFE项目</span><span>(10)</span><a href="javascript:;" class="destroy"></a></div>\r\n\t\t\t\t<ul class="task-list">\r\n\t\t\t\t\t<li class="task"><span class="task-name" title="任务一任务一任务一">任务一任务一任务一</span><span>(6)</span><a href="javascript:;" class="destroy"></a></li>\r\n\t\t\t\t\t<li class="task"><span class="task-name" title="任务二任务二任务二">任务二任务二任务二</span><span>(4)</span><a href="javascript:;" class="destroy"></a></li>\r\n\t\t\t\t</ul>\r\n\t\t\t</li>\r\n\t\t\t<li class="cate-item">\r\n\t\t\t\t<div class="cate"><span class="cate-name" title="百度IFE项目百度IFE项目">百度IFE项目百度IFE项目</span><span>(10)</span><a href="javascript:;" class="destroy"></a></div>\r\n\t\t\t\t<ul class="task-list">\r\n\t\t\t\t\t<li class="task"><span class="task-name" title="任务一任务一任务一">任务一任务一任务一</span><span>(6)</span><a href="javascript:;" class="destroy"></a></li>\r\n\t\t\t\t\t<li class="task"><span class="task-name" title="任务二任务二任务二">任务二任务二任务二</span><span>(4)</span><a href="javascript:;" class="destroy"></a></li>\r\n\t\t\t\t</ul>\r\n\t\t\t</li>\r\n\t\t</ul>\r\n\t</div>\r\n\t<div class="add-cate"><a class="j-add-cate" href="javascript:;"></a><span>新增分类</span></div>\r\n</div>';
+
+}
+return __p
+}
+
+});

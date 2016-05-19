@@ -1,0 +1,115 @@
+@import url(mixins/global.less);
+/* 所有分类详情列表 */
+.app-cate-list {
+	position: relative;
+	height: 100%;
+	.hide{
+		display: none;
+	}
+	.destroy{
+		display: none;
+		position: absolute;
+		top: 8px;
+		right: 12px;
+		width: 12px;
+		height: 12px;
+		// background-color: green;
+		background: url("@{imagePath}x.png") no-repeat center center/10px;
+	}
+	.cates-top{
+		position: absolute;
+		top: 13px;
+		left: 0;
+		right: 0;
+		height: 76px;
+		font-size: 18px;
+		.task-counts{
+			margin: 12px 0 10px @cate-margin-left;
+		}
+		.title{
+			margin-left: @cate-margin-left;
+			font-weight: normal;
+			line-height: 33px;
+		}
+	}
+	.cates{
+		box-sizing: border-box;
+		height: 100%;
+    	padding-top: 89px;
+		padding-bottom: 45px;
+		font-size: 16px;
+		.cates-list{
+		    max-height: 100%;
+    		overflow-y: auto;
+    		list-style-type: none;
+		}
+		.cate{
+			position: relative;
+			padding-left: 50px;
+			line-height: 28px;			
+			background: url("@{imagePath}folder.png") no-repeat 28px center/16px;
+			cursor: pointer;
+			span{
+				vertical-align: top;
+			}
+			&:hover{
+				background-color: #ccc;
+			}
+			&:hover .destroy{
+				display: block;
+			}
+		}
+		.cate-name{
+			display: inline-block;
+			max-width: 114px;
+			.text-hidden;
+		}
+		.task-list{
+			list-style-type: none;
+		}
+		.task{
+			position: relative;
+			padding-left: 64px;
+			line-height: 28px;			
+			background: url("@{imagePath}file.png") no-repeat 44px center;
+			cursor: pointer;
+			span{
+				vertical-align: top;
+			}
+			&:hover{
+				background-color: #fff;
+			}
+			&:hover .destroy{
+				display: block;
+			}
+		}
+		.task-name{
+			display: inline-block;
+			max-width: 106px;
+			.text-hidden;
+		}
+	}
+	.add-cate{
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: 44px;
+		border-top: @cborder;
+		background-color: #eee;
+		a{
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			border-width: 0;
+			margin: 12px 10px 0 18px;
+			background: url("@{imagePath}add-2.png") no-repeat center center;
+			cursor: pointer;
+		}
+		span{
+			font-size: 14px;
+			line-height: 20px;
+			vertical-align: text-bottom;
+		}
+	}
+}

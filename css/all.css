@@ -1,9 +1,5 @@
-/*! 利用grunt实现批量自动编译less */
-.asdas .as {
-  margin-top: 0;
-  font-size: 12px;
-  color: red;
-}
-a {
-  text-decoration: none;
-}
+@import url(style/reset.css);
+@import url(style/header.css);
+@import url(style/app-cate-list.css);
+@import url(style/app-task-list.css);
+@import url(style/app-task.css);
