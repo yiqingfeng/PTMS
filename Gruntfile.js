@@ -15,9 +15,9 @@ module.exports = function (grunt){
 				// processName: function(filename){
 				// 	return filename + '-html';
 				// },
-				templateSettings: {// 对相关引擎模板进行设置
-					interpolate: /\{\{(.+?)\}\}/g
-				},
+				// templateSettings: {// 对相关引擎模板进行设置
+				// 	interpolate: /\{\{(.+?)\}\}/g
+				// },
 			},
 			files: {
 				expand: true,
@@ -62,8 +62,10 @@ module.exports = function (grunt){
 					livereload: true,
 					spawn: false
 				},
-				files: [srcAllLESS + '**/*.less', srcTepPath + '**/*.html'],
-				tasks: ['less', 'jst']
+				// files: [srcAllLESS + '**/*.less', srcTepPath + '**/*.html'],
+				files: [srcTepPath + '**/*.html'],
+				// tasks: ['less', 'jst']
+				tasks: ['jst']
 			}
 		},
 		'jshint': {
@@ -73,7 +75,7 @@ module.exports = function (grunt){
 				"eqeqeq": true,
 				"undef": true,
 				"globals": {
-					// "jQuery": true
+					"jQuery": true
 				},
 				// reporterOutput: 'jshint.txt'
 			},
