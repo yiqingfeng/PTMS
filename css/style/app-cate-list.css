@@ -59,6 +59,13 @@
 .app-cate-list .cates .cate:hover .destroy {
   display: block;
 }
+.app-cate-list .cates .cate-input {
+  display: none;
+  position: relative;
+  padding-left: 50px;
+  line-height: 28px;
+  background: url("../../images/folder.png") no-repeat 28px center / 16px;
+}
 .app-cate-list .cates .cate-name {
   display: inline-block;
   max-width: 114px;
