@@ -1,15 +1,27 @@
 <ul class="cates-list">
 	<% for(var i=0,len=obj.length; i<len; i++){ %>
 	<li class="cate-item" data-cid=<%= obj[i]._id %>>
-		<div class="cate"><span class="cate-name" title=<%= obj[i].name %>><%= obj[i].name %></span><span><%= obj[i].todos? "("+obj[i].todos+")" : "" %></span><a href="javascript:;" class="destroy j-destroy-c"></a></div>
+		<div class="cate">
+			<span class="cate-name" title=<%= obj[i].name %>><%= obj[i].name %></span><span><%= obj[i].todos? "("+obj[i].todos+")" : "" %></span>
+			<a href="javascript:;" class="cate-add-task j-cate-add-task">
+			<a href="javascript:;" class="cate-edit j-cate-edit">
+			<a href="javascript:;" class="destroy j-destroy-c"></a>
+		</div>
 		<div class="cate-input"><input type="text" class="j-cate-edit" value=<%= obj[i].name %>></div>
+		<ul class="task-list hide">
 		<% if(obj[i].tasks){ %>
-			<ul class="task-list hide">
-				<% for(var j=0,jlen=obj[i].tasks.length; j<jlen; j++){ %>
-					<li class="task"><span class="task-name" title=<%= obj[i].tasks[j].name %>><%= obj[i].tasks[j].name %></span><span><%= obj[i].tasks[j].todos ? "("+obj[i].tasks[j].todos+")" : "" %></span><a href="javascript:;" class="destroy j-destroy-t"></a></li>
-				<% } %>
-			</ul>
+			<% for(var j=0,jlen=obj[i].tasks.length; j<jlen; j++){ %>
+				<li class="task" data-tid=<%= obj[i].tasks[j]._id %>>
+					<div class="task-view">
+						<span class="task-name" title=<%= obj[i].tasks[j].name %>><%= obj[i].tasks[j].name %></span><span><%= obj[i].tasks[j].todos ? "("+obj[i].tasks[j].todos+")" : "" %></span>
+						<a href="javascript:;" class="task-edit"></a>
+						<a href="javascript:;" class="destroy j-destroy-t"></a>
+					</div>
+					<input type="text" class="j-edit-task" value=<%= obj[i].tasks[j].name %>>
+				</li>
+			<% } %>
 		<% } %>
+		</ul>
 	</li>
 	<% } %>
 	<!-- <li class="cate-item">

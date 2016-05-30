@@ -101,7 +101,7 @@
 			return cate.tasks[index];
 		},
 		removeTask: function (cid, id){
-			var cate = this.findTask(cid, id);
+			var cate = this.find(cid);
 			if (!cate || !cate.tasks) return;
 			var index = findObj(cate.tasks, id);
 			if (index === -1) return;

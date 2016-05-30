@@ -62,10 +62,10 @@ module.exports = function (grunt){
 					livereload: true,
 					spawn: false
 				},
-				// files: [srcAllLESS + '**/*.less', srcTepPath + '**/*.html'],
-				files: [srcTepPath + '**/*.html'],
-				// tasks: ['less', 'jst']
-				tasks: ['jst']
+				files: [srcAllLESS + '**/*.less', srcTepPath + '**/*.html'],
+				// files: [srcTepPath + '**/*.html'],
+				tasks: ['less', 'jst']
+				// tasks: ['jst']
 			}
 		},
 		'jshint': {

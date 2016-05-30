@@ -43,7 +43,6 @@ define(function (require, exports, module){
 			return cates;
 		},
 		clearCate: function (cid){
-			// var tasks = store.findTask(cid);
 			var cate = store.find(cid);
 			if (!cate) return;
 			if (!cate.tasks) {
@@ -64,7 +63,51 @@ define(function (require, exports, module){
 			var cate = store.find(cid);
 			cate.name = name;
 			store.set(cate);
-			// console.log(name);
+		},
+		createTask: function(cid){
+			var cate = store.find(cid);
+			return store.setTask(cate, {name: '新建任务'});
+		},
+		clearTask: function(cid, tid){
+			return store.removeTask(cid, tid);
+		},
+		updateTaskName: function (cid, tid, name){
+			var cate = store.find(cid),
+				task = store.findTask(cid, tid);
+			task.name = name;
+			store.setTask(cate, task);
+		},
+		getTodosByDate: function (tid, state=0){
+			var todos = store.findTodo(tid);
+			// console.log(sortByDate(todos));
+			return sortByDate(todos);
+			function isObjPro (arr, date){
+				for (var i=0, l=arr.length; i < l; i++) {
+					if (date === arr[i].date) return i;
+				}
+				return -1;
+			}
+			function sortByDate(arr){
+				var newArr = [];
+				arr.forEach(function (todo){
+					var date = todo.date.substr(0, 10),
+						index = isObjPro(newArr, date);
+					if (index !== -1) {
+						newArr[index].todos.push(todo);
+					} else {
+						var item = {
+							date: date,
+							todos: []
+						}
+						item.todos.push(todo);
+						newArr.push(item);
+					}
+				});
+				return newArr;
+			}
+		},
+		createTodo: function (tid){
+			return store.setTodo(tid, {name: 'todo...', date: new Date(), content: '', done: false});
 		}
 	}
 });

@@ -6,14 +6,41 @@
 .app-cate-list .hide {
   display: none;
 }
+.app-cate-list .cate-add-task {
+  display: none;
+  position: absolute;
+  top: 8px;
+  right: 38px;
+  width: 12px;
+  height: 12px;
+  background: url("../../images/add-task.png") no-repeat center center / 11px;
+}
+.app-cate-list .cate-edit {
+  display: none;
+  position: absolute;
+  top: 8px;
+  right: 21px;
+  width: 12px;
+  height: 12px;
+  background: url("../../images/folder-edit-1.png") no-repeat center center / 11px;
+}
 .app-cate-list .destroy {
   display: none;
   position: absolute;
   top: 8px;
-  right: 12px;
+  right: 6px;
   width: 12px;
   height: 12px;
   background: url("../../images/x.png") no-repeat center center / 10px;
+}
+.app-cate-list .task-edit {
+  display: none;
+  position: absolute;
+  top: 8px;
+  right: 21px;
+  width: 12px;
+  height: 12px;
+  background: url("../../images/folder-edit-1.png") no-repeat center center / 11px;
 }
 .app-cate-list .cates-top {
   position: absolute;
@@ -56,7 +83,16 @@
 .app-cate-list .cates .cate:hover {
   background-color: #ccc;
 }
+.app-cate-list .cates .cate:hover .cate-add-task {
+  display: block;
+}
+.app-cate-list .cates .cate:hover .cate-edit {
+  display: block;
+}
 .app-cate-list .cates .cate:hover .destroy {
+  display: block;
+}
+.app-cate-list .cates .cate:hover .task-edit {
   display: block;
 }
 .app-cate-list .cates .cate-input {
@@ -68,7 +104,7 @@
 }
 .app-cate-list .cates .cate-name {
   display: inline-block;
-  max-width: 114px;
+  max-width: 90px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -91,6 +127,15 @@
 }
 .app-cate-list .cates .task:hover .destroy {
   display: block;
+}
+.app-cate-list .cates .task:hover .task-edit {
+  display: block;
+}
+.app-cate-list .cates .task input {
+  display: none;
+  box-sizing: border-box;
+  height: 28px;
+  width: 150px;
 }
 .app-cate-list .cates .task-name {
   display: inline-block;
