@@ -48,6 +48,7 @@
   background-color: #fafaee;
 }
 .app-task-list .task-c {
+  position: relative;
   height: 28px;
   padding-left: 36px;
   line-height: 28px;
@@ -55,6 +56,12 @@
 }
 .app-task-list .task-c:hover {
   background-color: #f2f2f2;
+}
+.app-task-list .task-c:hover .todo-edit {
+  display: block;
+}
+.app-task-list .task-c:hover .todo-destroy {
+  display: block;
 }
 .app-task-list .task-c.curt {
   color: #238c00;
@@ -81,4 +88,31 @@
   font-size: 14px;
   line-height: 20px;
   vertical-align: text-bottom;
+}
+.app-task-list .todo-name {
+  max-width: 130px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.app-task-list .todo-name-edit {
+  display: none;
+}
+.app-task-list .todo-edit {
+  display: none;
+  position: absolute;
+  top: 8px;
+  right: 21px;
+  width: 12px;
+  height: 12px;
+  background: url("../../images/todo-edit.png") no-repeat center center / 10px;
+}
+.app-task-list .todo-destroy {
+  display: none;
+  position: absolute;
+  top: 8px;
+  right: 6px;
+  width: 12px;
+  height: 12px;
+  background: url("../../images/x.png") no-repeat center center / 10px;
 }

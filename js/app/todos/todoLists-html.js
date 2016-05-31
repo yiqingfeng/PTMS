@@ -1,0 +1,5 @@
+define(function(){
+
+  return function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape, __j = Array.prototype.join;function print() { __p += __j.call(arguments, '') }with (obj) { for(var i=0,l=obj.length; i<l; i++){ ;__p += '\r\n\t<li class="date">' +((__t = ( obj[i].date )) == null ? '' : __t) +'</li>\r\n\t'; var todos = obj[i].todos ;__p += '\r\n\t'; for(var j=0,jl=todos.length; j<jl; j++){ ;__p += '\r\n\t\t<li class="task-c" data-id=' +((__t = ( todos[j]._id )) == null ? '' : __t) +'>\r\n\t\t\t<div class="todo-view">\r\n\t\t\t\t<div class="todo-name" title=' +((__t = ( todos[j].name )) == null ? '' : __t) +'>' +((__t = ( todos[j].name )) == null ? '' : __t) +'</div>\r\n\t\t\t\t<a href="javascript:;" class="todo-edit"></a>\r\n\t\t\t\t<a href="javascript:;" class="todo-destroy"></a>\r\n\t\t\t</div>\r\n\t\t\t<input type="text" class="todo-name-edit" value=' +((__t = ( todos[j].name )) == null ? '' : __t) +'>\r\n\t\t</li>\r\n\t'; } ;__p += '\r\n'; } ;}return __p}
+
+});

@@ -1,8 +1,15 @@
 define(function(require, exports, module) {
-	var $ = require('jquery'),
-		cateList = require('./cate-list/main'),
+	var root = window;
+	root.PTMS || (root.PTMS = {});
+	var events = root.PTMS.events = {};
+	// 创建全局Events
+	_.extend(events, Backbone.Events);
+
+	var cateList = require('./cates/main'),
 		todos = require('./todos/main');
 
-	cateList.init($('.m-cate-list .app-c'));
-	todos.init($('.m-task-list .app-c'));
+	cateList.init($('.m-cate-list .app-c'), events);
+	todos.init($('.m-task-list .app-c'), events);
+
+	// events.trigger('cates:test');
 });

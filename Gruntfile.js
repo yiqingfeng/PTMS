@@ -10,7 +10,7 @@ module.exports = function (grunt){
 		'jst': {
 			options:{
 				amd: true,// 输出AMD模块文件，即用define函数包起来
-				// prettify: true,// 编译成一行
+				prettify: true,// 编译成一行
 				namespace: false,
 				// processName: function(filename){
 				// 	return filename + '-html';

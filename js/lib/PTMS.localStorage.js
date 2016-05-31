@@ -9,14 +9,13 @@
 	// Generate four random hex digits.
 	function S4() {
 		return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
-		// return (((1+Math.random())*0x10000)|0).toString(16).substr(0, 4);
 	};
-
 	// Generate a pseudo-GUID by concatenating random hexadecimal.
 	function guid() {
 		return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
 	};
 
+	// get index form array made of object by id of object
 	function findObj(arr, id){
 		for (var i=0,len=arr.length; i<len; i++){
 			if (id === arr[i]._id) {
@@ -27,9 +26,9 @@
 	}
 
 	var Store = function (name){
-		this.name = name;
+		this.name = name;// set namespce
 		var store = this.localStorage().getItem(this.name);
-		this.records = (store && store.split(',')) || [];
+		this.records = (store && store.split(',')) || [];// record all tasks
 	};
 	root.PTMS || (root.PTMS = {});
 	root.PTMS.Store = root.localStorage ? Store : undefined;
@@ -44,7 +43,7 @@
 		jsonData: function (data){
 			return data && JSON.parse(data);
 		},
-		// 类别
+		// category
 		set: function (obj){
 			if (!obj._id) {
 				obj._id = guid();
@@ -76,7 +75,7 @@
 			this.save();
 			return true;
 		},
-		// 任务
+		// task
 		setTask: function (cate, obj){
 			var me = this;
 			if (!(cate._id && me.records.indexOf(cate._id) !== -1)) return;
@@ -109,20 +108,26 @@
 			this.set(cate);
 			this.localStorage().removeItem(this.name+'-task-'+id);
 		},
-		// Todo
+		// todo
 		setTodo: function (tid, obj){
 			var me = this;
 			if (!obj._id) {
 				obj._id = guid();
-				var tasks = me.jsonData(me.localStorage().getItem(me.name+'-task-'+tid)) || [];
-				tasks.push(obj);
-				me.localStorage().setItem(me.name+'-task-'+tid, JSON.stringify(tasks));
+				var task = me.jsonData(me.localStorage().getItem(me.name+'-task-'+tid)) || [];
+				task.push(obj);
+				me.localStorage().setItem(me.name+'-task-'+tid, JSON.stringify(task));
 				return me.findTodo(tid, obj._id);
 			}
-
+			var task = me.jsonData(me.localStorage().getItem(me.name+'-task-'+tid));
+			if (!task) return;
+			var index = findObj(task, obj._id);
+			if (index === -1) return;
+			task.splice(index, 1, obj);
+			me.localStorage().setItem(me.name+'-task-'+tid, JSON.stringify(task));
+			return me.findTodo(tid, obj._id);
 		},
 		findTodo: function (tid, id){
-			var tasks = this.jsonData(this.localStorage().getItem(this.name+'-task-'+tid)) || [];
+			var tasks = this.jsonData(this.localStorage().getItem(this.name+'-task-'+tid)) || undefined;
 			if (!tasks || !id) {
 				return tasks;
 			}
@@ -140,29 +145,3 @@
 		}
 	}
 })(window, undefined);
-
-// window.localStorage.clear();// 清理存储
-
-// var store = new PTMS.Store('test');
-// var a = {as:12312};
-// store.set(a);
-// // store.remove(a);
-// // console.log(store.records[0]);
-// // console.log(store.find(store.records[0]));
-// var b = {ds:98989};
-// store.setTask(store.find(store.records[0]), b);
-// b.ds = 90;
-// store.setTask(store.find(store.records[0]), b);
-// var c = {as:98989};
-// store.setTask(store.find(store.records[0]), c);
-// c.as = 90;
-// store.setTask(store.find(store.records[0]), c);
-// // console.log(store.findTask(store.find(store.records[0]), c._id));
-// // store.removeTask(store.find(store.records[0]), c._id);
-// // console.log(store.find(store.records[0]));
-// // console.log(store);
-
-// var d = {todo:1231};
-// store.setTodo(c._id, d);
-// console.log(store.findTodo(c._id, d._id));
-// store.removeTodo(c._id, d._id);

@@ -48,12 +48,19 @@
 		background-color: #fafaee;
 	}
 	.task-c{
+		position: relative;
 		height: 28px;
 		padding-left: 36px;
 		line-height: 28px;
 		cursor: pointer;
 		&:hover{
 			background-color: #f2f2f2;
+			.todo-edit{
+				display: block;
+			}
+			.todo-destroy{
+				display: block;
+			}
 		}
 		&.curt{
 			color: #238c00;
@@ -81,5 +88,30 @@
 			line-height: 20px;
 			vertical-align: text-bottom;
 		}
+	}
+	.todo-name{
+		max-width: 130px;
+		.text-hidden;
+	}
+	.todo-name-edit{
+		display: none;
+	}
+	.todo-edit{
+		display: none;
+		position: absolute;
+		top: 8px;
+		right: 21px;
+		width: 12px;
+		height: 12px;
+		background: url("@{imagePath}todo-edit.png") no-repeat center center/10px;
+	}
+	.todo-destroy{
+		display: none;
+		position: absolute;
+		top: 8px;
+		right: 6px;
+		width: 12px;
+		height: 12px;
+		background: url("@{imagePath}x.png") no-repeat center center/10px;
 	}
 }

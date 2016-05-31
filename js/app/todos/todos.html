@@ -4,13 +4,7 @@
 	</ul>
 	<div class="tasks">
 		<ul class="tasks-list">
-			<% for(var i=0,l=obj.length; i<l; i++){ %>
-				<li class="date"><%= obj[i].date %></li>
-				<% var todos = obj[i].todos %>
-				<% for(var j=0,jl=todos.length; j<jl; j++){ %>
-					<li class="task-c"><%= todos[j].name %></li>
-				<% } %>
-			<% } %>
+			
 		</ul>
 	</div>
 	<div class="add-task"><a class="j-add-task" href="javascript:;"></a><span>新增任务</span></div>

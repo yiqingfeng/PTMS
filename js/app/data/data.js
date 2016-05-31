@@ -1,13 +1,9 @@
 define(function (require, exports, module){
 	var store =  PTMS.store || new PTMS.Store('PTMS');
-	// var cate = store.set({
-	// 	name: '新建分类'
-	// });
-	// var task = store.setTask(cate, {name: '新建任务'});
-	// var todo = store.setTodo(task._id, {name: '子任务1', date: new Date(), content: 'tets', done: false});
 	module.exports = {
 		getTodoNumByTid: function (tid){
-			return store.findTodo(tid).length;
+			var todos = store.findTodo(tid);
+			return todos ? todos.length : 0;
 		},
 		getTodoNumByCid: function (cid){
 			var me = this,
@@ -80,7 +76,7 @@ define(function (require, exports, module){
 		getTodosByDate: function (tid, state=0){
 			var todos = store.findTodo(tid);
 			// console.log(sortByDate(todos));
-			return sortByDate(todos);
+			return todos && sortByDate(todos);
 			function isObjPro (arr, date){
 				for (var i=0, l=arr.length; i < l; i++) {
 					if (date === arr[i].date) return i;
@@ -108,6 +104,15 @@ define(function (require, exports, module){
 		},
 		createTodo: function (tid){
 			return store.setTodo(tid, {name: 'todo...', date: new Date(), content: '', done: false});
+		},
+		clearTodo: function (tid, id){
+			return store.removeTodo(tid, id);
+		},
+		updateTodoName: function (tid, id, name){
+			var todo = store.findTodo(tid, id);
+			if (!todo) return;
+			todo.name = name;
+			return store.setTodo(tid, todo);
 		}
 	}
 });
