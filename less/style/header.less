@@ -1,11 +1,16 @@
 @import url(mixins/global.less);
+/* 整体设计 */
+
+.hide {
+	display: none;
+}
+
 .g-h{
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
 	height: 60px;
-	// padding: 19px 0 16px 14px;
 	border-bottom: @cborder;
 	background-color: #ddd;
 	.title{
@@ -28,20 +33,14 @@
 		top: 0;
 		height: 100%;
 	}
-	.m-cate-list{
-		left: 0;
-		width: 230px;
-		border-right: @cborder;
-		background-color: #f2f2f2;
-	}
 	.m-task-list{
-		left: 231px;
-		width: 230px;
+		left: 261px;
+		width: 260px;
 		border-right: @cborder;
 		// background-color: #fff;
 	}
 	.m-task{
-		left: 462px;
+		left: 522px;
 		right: 0;
 		// background-color: #fff;
 	}
@@ -52,3 +51,9 @@
 	}
 }
 
+#app-cates{
+	left: 0;
+	width: 260px;
+	border-right: @cborder;
+	background-color: #f2f2f2;
+}

@@ -1,5 +1,8 @@
 <li class="task" data-tid=<%= obj._id %>>
-	<span class="task-name" title=<%= obj.name %>><%= obj.name %></span><span></span>
-	<a href="javascript:;" class="task-edit"></a>
-	<a href="javascript:;" class="destroy j-destroy-t"></a>
+	<div class="task-view">
+		<span class="task-name" title=<%= obj.name %>><%= obj.name %></span><span></span>
+		<a class="edit j-task-edit" href="javascript:;"></a>
+		<a class="destroy j-task-destroy" href="javascript:;"></a>
+	</div>
+	<input class="task-rename" value=<%= obj.name %>>
 </li>

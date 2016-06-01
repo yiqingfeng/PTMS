@@ -75,7 +75,6 @@ define(function (require, exports, module){
 		},
 		getTodosByDate: function (tid, state=0){
 			var todos = store.findTodo(tid);
-			// console.log(sortByDate(todos));
 			return todos && sortByDate(todos);
 			function isObjPro (arr, date){
 				for (var i=0, l=arr.length; i < l; i++) {

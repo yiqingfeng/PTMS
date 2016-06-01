@@ -5,11 +5,11 @@ define(function(require, exports, module) {
 	// 创建全局Events
 	_.extend(events, Backbone.Events);
 
-	var cateList = require('./cates/main'),
-		todos = require('./todos/main');
+	var cateList = require('./cates/main');
+		// todos = require('./todos/main');
 
-	cateList.init($('.m-cate-list .app-c'), events);
-	todos.init($('.m-task-list .app-c'), events);
+	cateList.init($('#app-cates'), events);
+	// todos.init($('.m-task-list .app-c'), events);
 
 	// events.trigger('cates:test');
 });

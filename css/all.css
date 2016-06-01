@@ -1,5 +1,252 @@
-@import url(style/reset.css);
-@import url(style/header.css);
-@import url(style/app-cate-list.css);
-@import url(style/app-task-list.css);
-@import url(style/app-task.css);
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+p,
+img,
+strong,
+ol,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+header,
+section {
+  display: block;
+}
+ul {
+  list-style-type: none;
+}
+/* 整体设计 */
+.hide {
+  display: none;
+}
+.g-h {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  border-bottom: 1px solid #ccc;
+  background-color: #ddd;
+}
+.g-h .title {
+  margin: 19px 0 16px 14px;
+  font: 18px/1.4 tahoma, arial, 'Hiragino Sans GB', 'Hiragino Sans GB W3', 'Microsoft Yahei';
+  color: #999;
+}
+.g-doc {
+  position: fixed;
+  top: 61px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  min-width: 700px;
+  overflow-x: auto;
+}
+.g-doc .m-tasks {
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+.g-doc .m-task-list {
+  left: 261px;
+  width: 260px;
+  border-right: 1px solid #ccc;
+}
+.g-doc .m-task {
+  left: 522px;
+  right: 0;
+}
+.g-doc .app-c {
+  width: 100%;
+  height: 100%;
+}
+#app-cates {
+  left: 0;
+  width: 260px;
+  border-right: 1px solid #ccc;
+  background-color: #f2f2f2;
+}
+/* 所有分类详情列表 */
+.app-cates {
+  position: relative;
+  height: 100%;
+}
+.app-cates .cates-top {
+  position: absolute;
+  top: 13px;
+  left: 0;
+  right: 0;
+  height: 76px;
+  font-size: 18px;
+}
+.app-cates .cates-top .title {
+  margin-left: 12px;
+  font-weight: normal;
+  line-height: 33px;
+}
+.app-cates .task-nums {
+  margin: 12px 0 10px 12px;
+}
+.app-cates .cates {
+  box-sizing: border-box;
+  height: 100%;
+  padding-top: 89px;
+  padding-bottom: 45px;
+  font-size: 16px;
+}
+.app-cates .cate-lists {
+  max-height: 100%;
+  overflow-y: auto;
+  list-style-type: none;
+}
+.app-cates .cate .open {
+  background-image: url("../images/cate-open.png");
+}
+.app-cates .cate .add-task {
+  display: none;
+  position: absolute;
+  top: 6px;
+  right: 50px;
+  width: 16px;
+  height: 16px;
+  background: url("../images/add.png") no-repeat center center;
+}
+.app-cates .cate .add-task:hover {
+  background-image: url("../images/add-hover.png");
+}
+.app-cates .cate .edit {
+  display: none;
+  position: absolute;
+  top: 6px;
+  right: 28px;
+  width: 16px;
+  height: 16px;
+  background: url("../images/edit.png") no-repeat center center;
+}
+.app-cates .cate .edit:hover {
+  background-image: url("../images/edit-hover.png");
+}
+.app-cates .cate .destroy {
+  display: none;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 16px;
+  height: 16px;
+  background: url("../images/delete.png") no-repeat center center;
+}
+.app-cates .cate .destroy:hover {
+  background-image: url("../images/delete-hover.png");
+}
+.app-cates .cate-view {
+  position: relative;
+  padding-left: 50px;
+  height: 28px;
+  line-height: 28px;
+  background: url("../images/cate.png") no-repeat 28px center;
+  cursor: pointer;
+}
+.app-cates .cate-view:hover {
+  background-color: #ccc;
+}
+.app-cates .cate-view:hover .add-task,
+.app-cates .cate-view:hover .edit,
+.app-cates .cate-view:hover .destroy {
+  display: block;
+}
+.app-cates .cate-view span {
+  vertical-align: top;
+}
+.app-cates .cate-name {
+  display: inline-block;
+  max-width: 96px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.app-cates .cate-rename {
+  display: none;
+  box-sizing: border-box;
+  width: 190px;
+  height: 28px;
+  margin-left: 29px;
+  border-width: 2px;
+  padding-left: 6px;
+  font-size: 16px;
+}
+.app-cates .task-lists {
+  list-style-type: none;
+}
+.app-cates .task .open {
+  background-image: url("../images/file-open.png");
+}
+.app-cates .task-view {
+  position: relative;
+  height: 28px;
+  padding-left: 64px;
+  line-height: 28px;
+  background: url("../images/file.png") no-repeat 44px center;
+  cursor: pointer;
+}
+.app-cates .task-view span {
+  vertical-align: top;
+}
+.app-cates .task-view:hover {
+  background-color: #fff;
+}
+.app-cates .task-view:hover .edit,
+.app-cates .task-view:hover .destroy {
+  display: block;
+}
+.app-cates .task-name {
+  display: inline-block;
+  max-width: 110px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.app-cates .task-rename {
+  display: none;
+  box-sizing: border-box;
+  width: 180px;
+  height: 28px;
+  margin-left: 44px;
+  border-width: 2px;
+  padding-left: 6px;
+  font-size: 14px;
+}
+.app-cates .add-cate {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 44px;
+  border-top: 1px solid #ccc;
+  background-color: #eee;
+}
+.app-cates .add-cate a {
+  position: absolute;
+  top: 12px;
+  left: 18px;
+  width: 20px;
+  height: 20px;
+  background: url("../images/add1.png") no-repeat center center;
+  cursor: pointer;
+}
+.app-cates .add-cate div {
+  margin-top: 12px;
+  margin-left: 50px;
+  font-size: 14px;
+  line-height: 20px;
+}

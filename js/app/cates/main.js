@@ -1,6 +1,5 @@
 define(function(require, exports, module) {
 	var root = window,
-		// $ = require('jquery'),
 		data = require('../data/data'),
 		cateTemps = [
 			require('./main-html'),
@@ -8,6 +7,15 @@ define(function(require, exports, module) {
 			require('./add-cate-html'),
 			require('./add-task-html')
 		];
+
+	// No binding when there is this type of event
+	function bindEventOne(el ,type, callback){
+		var events = $._data(el, 'events');
+		if (events && events[type]) {
+			return;
+		}
+		$(el).on(type, callback);
+	}
 
 	var CateList = function(opts) {
 		this.opts = $.extend({
@@ -23,24 +31,63 @@ define(function(require, exports, module) {
 			me.queryCateList();
 			me.bindEvent();
 		},
-		// 设置当前cid和tid
-		setIndex: function (tid){
-			// root.PTMS.TID = tid;
-			var oldTid = root.PTMS.TID;
-			if (oldTid === tid) return;
+		// set global tid
+		setTid: function (tid){
+			var oldTid = root.PTMS.TID || "";
+			if (oldTid === tid) {
+				return;
+			}
 			root.PTMS.TID = tid;
 			this.events.trigger('tidExchange:after');
+			console.log('tidExchange:after');
 		},
 		queryCateList: function (){
 			var cates = data.getTaskMenu();
+			if (cates.length) {
+				root.PTMS.CID = cates[0]._id;
+			}
 			this.renderCateList(cates);
 		},
 		renderCateList: function (datas){
 			$('.j-cates', this.$el).append(cateTemps[1](datas));
 		},
 		dealTaskClick: function ($el){
+			
+			// destroy task
+			if ($el.hasClass('j-task-destroy')) {
+				var cid = getCid($el),
+					$task = getTaskEle($el),
+					tid = $task.attr('data-tid');
+				$task.remove();
+				data.clearTask(cid, tid);
+				return;
+			}
+			// rename task
+			if ($el.hasClass('j-task-edit')) {
+				var cid = getCid($el),
+					tid = getTaskEle($el).attr('data-tid'),
+					$taskView = $el.parent(),
+					$input = $taskView.siblings();
+				$taskView.hide();
+				$input.show().focus();
+				bindEventOne($input[0], 'blur', function (){
+					var value = $input.prop('value'),
+						$taskName = $taskView.find('.task-name');
+					if (value !== '') {
+						$taskName.attr('title', value).text(value);
+						$input.hide();
+						$taskView.show();
+						data.updateTaskName(cid, tid, value);
+					}
+				});
+				return;
+			}
+			var cid = getCid($el),
+				tid = getTaskEle($el).attr('data-tid');
+			root.PTMS.CID = cid;
+			this.setTid(tid);
 			function getCid($el){
-				while(!$el.hasClass('cate-item')){
+				while(!$el.hasClass('cate')){
 					$el = $el.parent();
 				}
 				return $el.attr('data-cid');
@@ -51,63 +98,10 @@ define(function(require, exports, module) {
 				}
 				return $el;
 			}
-			// 删除TASK
-			if ($el.hasClass('j-destroy-t')) {
-				var cid = getCid($el),
-					task = getTaskEle($el),
-					tid = task.attr('data-tid');
-				data.clearTask(cid, tid);
-				task.remove();
-				return;
-			}
-			// 修改TASK名称
-			if ($el.hasClass('task-edit')) {
-				var cid = getCid($el),
-					tid = getTaskEle($el).attr('data-tid'),
-					$input = $el.parent().siblings(),
-					events = $._data($input[0], 'events');
-				$el.parent().css('display', 'none');
-				$input.css('display', 'block');
-				timer1 && clearTimeout(timer1);
-				var timer1 = setTimeout(function (){
-					$input.focus();
-				}, 0);
-				// 绑定blur事件
-				if (!(events && events.blur)) {
-					var $taskName = $el.siblings('.task-name');
-					$input.blur(function (){
-						var value = $input.prop('value');
-						console.log(value);
-						if (value != '') {
-							$taskName.attr('title', value).text(value);
-							$taskName.parent().css('display', 'block');
-							$input.css('display', 'none');
-							data.updateTaskName(cid, tid, value);
-						}
-					})
-				}
-				return;
-			}
-			var cid = getCid($el),
-				tid = getTaskEle($el).attr('data-tid');
-			this.setIndex(tid);
 		},
 		bindEvent: function (){
 			var me = this,
-				$cates = $('.cates-list', me.$el);
-			$('.cate-input input', $cates).on('blur', function (){
-				var value = $(this).prop('value'),
-					$cate = $(this).parent().parent();
-					$cateName = $('.cate-name', $cate);
-					// oldValue = $cate.text();
-				if (value != '') {
-					$cateName.attr('title', value);
-					$cateName.text(value);
-					$(this).parent().css('display', 'none');
-					$cateName.parent().css('display', 'block');
-					data.updateCateName($cate.attr('data-cid'), value);
-				}
-			});
+				$cates = $('.j-cates', me.$el);
 			$('.j-add-cate', me.$el).on('click', function (){
 				var cate = data.createCate();
 				$cate = $(cateTemps[2](cate));
@@ -115,45 +109,58 @@ define(function(require, exports, module) {
 			});
 			$cates.on('click', function (evt){
 				var $target = $(evt.target);
-				function getCurtCate($el){
-					while(!$el.hasClass('cates-list') && !$el.hasClass('cate-item')){
+				// destroy cate
+				if ($target.hasClass('j-cate-destroy')) {
+					var $cate = $target.parent().parent(),
+						cid = $cate.attr('data-cid');
+					$cate.remove();
+					data.clearCate(cid);
+					if (cid === root.PTMS.CID) {
+						root.PTMS.CID = "";
+						me.setTid("");						
+					}
+					return;
+				}
+				// rename cate
+				if ($target.hasClass('j-cate-edit')) {
+					var $cateView = $target.parent(),
+						$input = $cateView.siblings('input');
+					$('.task-lists', $cates).hide();
+					$cateView.hide();
+					$input.show().focus();
+					bindEventOne($input[0], 'blur', function(){
+						var value = $input.prop('value'),
+							$cateName = $cateView.find('.cate-name');
+						if(value !== '') {
+							$cateName.attr('title', value);
+							$cateName.text(value);
+							$input.hide();
+							$cateView.show();
+							data.updateCateName($cateView.parent().attr('data-cid'), value);
+						}
+					});
+					return;
+				}
+				// add task
+				if ($target.hasClass('j-add-task')) {
+					var $cate = $target.parent().parent(),
+						cid = $cate.attr('data-cid'),
+						task = data.createTask(cid);
+					$('.task-lists', $cate).append(cateTemps[3](task)).show();
+					return;
+				}
+				var $el = isTaskList($target);
+				if (!$el.hasClass('task-lists')) {
+					$('.task-lists', $el).toggle();
+					return;
+				}
+				me.dealTaskClick($target);
+				function isTaskList($el){
+					while(!$el.hasClass('cate') && !$el.hasClass('task-lists')){
 						$el = $el.parent();
 					}
 					return $el;
 				}
-				function isTaskList($el){
-					while(!$el.hasClass('cate-item') && !$el.hasClass('task-list')){
-						$el = $el.parent();
-					}
-					return $el.hasClass('task-list');
-				}
-				var $el = getCurtCate($target);
-				if (!$el.hasClass('cate-item')) return;
-				if ($target.hasClass('j-destroy-c')) {
-					var $cate = $target.parent().parent();
-					var cid = $cate.attr('data-cid');
-					$cate.remove();
-					data.clearCate(cid);
-					return;
-				}
-				if ($target.hasClass('cate-edit')) {
-					$target.parent().css('display', 'none');
-					$target.parent().siblings('.cate-input').css('display', 'block');
-					$('input', $target.parent().parent()).focus();
-					return;
-				}
-				if ($target.hasClass('cate-add-task')) {
-					var $cate = $target.parent().parent(),
-						cid = $cate.attr('data-cid'),
-						task = data.createTask(cid);
-					$('.task-list', $cate).append(cateTemps[3](task));
-					return;
-				}
-				if (!isTaskList($target)) {
-					$('.task-list', $el).toggleClass('hide');
-					return;
-				}
-				me.dealTaskClick($target);
 			});
 		}
 	}
@@ -164,10 +171,6 @@ define(function(require, exports, module) {
 			element: $root,
 			events: events
 		});
-		// events.on('cates:test', function(){
-		// 	console.log(123);
-		// });
 		cateList.init();
-		// console.log(cateList);
 	}
 });
