@@ -58,24 +58,20 @@ ul {
   top: 0;
   height: 100%;
 }
-.g-doc .m-task-list {
-  left: 261px;
-  width: 260px;
-  border-right: 1px solid #ccc;
-}
-.g-doc .m-task {
-  left: 522px;
-  right: 0;
-}
-.g-doc .app-c {
-  width: 100%;
-  height: 100%;
-}
 #app-cates {
   left: 0;
   width: 260px;
   border-right: 1px solid #ccc;
   background-color: #f2f2f2;
+}
+#app-todos {
+  left: 261px;
+  width: 260px;
+  border-right: 1px solid #ccc;
+}
+#app-todo {
+  left: 522px;
+  right: 0;
 }
 /* 所有分类详情列表 */
 .app-cates {
@@ -249,4 +245,197 @@ ul {
   margin-left: 50px;
   font-size: 14px;
   line-height: 20px;
+}
+/* todos list */
+.app-todos {
+  position: relative;
+  height: 100%;
+}
+.app-todos .todos-type {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background-color: #eee;
+  border-bottom: 1px solid #ccc;
+  font-size: 14px;
+}
+.app-todos .todos-type .status {
+  display: inline-block;
+  height: 20px;
+  margin-top: 10px;
+  margin-left: 15px;
+  padding: 0 8px;
+  border: 1px solid #eee;
+  line-height: 20px;
+  cursor: pointer;
+}
+.app-todos .todos-type .status:first-child {
+  margin-left: 35px;
+}
+.app-todos .todos-type .status.curt {
+  background-color: #fff;
+  border-color: #ccc;
+}
+.app-todos .todos {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 41px 0 45px 0;
+}
+.app-todos .todo-lists {
+  max-height: 100%;
+  overflow-y: auto;
+}
+.app-todos .date {
+  height: 34px;
+  padding-left: 20px;
+  line-height: 34px;
+  background-color: #fafaee;
+}
+.app-todos .todo {
+  height: 28px;
+  padding: 2px 0 2px 36px;
+  line-height: 28px;
+  cursor: pointer;
+}
+.app-todos .todo:hover {
+  background-color: #f2f2f2;
+}
+.app-todos .todo.curt {
+  color: #238c00;
+}
+.app-todos .todo-view {
+  position: relative;
+}
+.app-todos .todo-view:hover .edit,
+.app-todos .todo-view:hover .destroy {
+  display: block;
+}
+.app-todos .todo-view .edit {
+  display: none;
+  position: absolute;
+  top: 6px;
+  right: 28px;
+  width: 16px;
+  height: 16px;
+  background: url("../images/edit.png") no-repeat center center;
+}
+.app-todos .todo-view .edit:hover {
+  background-image: url("../images/edit-hover.png");
+}
+.app-todos .todo-view .destroy {
+  display: none;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 16px;
+  height: 16px;
+  background: url("../images/delete.png") no-repeat center center;
+}
+.app-todos .todo-view .destroy:hover {
+  background-image: url("../images/delete-hover.png");
+}
+.app-todos .todo-rename {
+  display: none;
+  box-sizing: border-box;
+  width: 200px;
+  height: 24px;
+  margin-top: 2px;
+  padding-left: 4px;
+  border-width: 2px;
+}
+.app-todos .add-todo {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 44px;
+  border-top: 1px solid #ccc;
+  background-color: #eee;
+}
+.app-todos .add-todo a {
+  position: absolute;
+  top: 12px;
+  left: 18px;
+  width: 20px;
+  height: 20px;
+  background: url("../images/add1.png") no-repeat center center;
+  cursor: pointer;
+}
+.app-todos .add-todo div {
+  margin-top: 12px;
+  margin-left: 50px;
+  font-size: 14px;
+  line-height: 20px;
+}
+/* todo */
+.app-todo {
+  position: relative;
+  height: 100%;
+}
+.app-todo .todo-head {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 52px;
+  border-bottom: 1px solid #ccc;
+  background-color: #f2f2f2;
+}
+.app-todo .todo-head h2 {
+  margin-left: 16px;
+  line-height: 52px;
+  font-size: 16px;
+}
+.app-todo .finish {
+  display: none;
+  position: absolute;
+  top: 12px;
+  right: 68px;
+  width: 28px;
+  height: 28px;
+  background: url("../images/finish.png") no-repeat center center;
+}
+.app-todo .finish:hover {
+  background-image: url("../images/finish-hover.png");
+}
+.app-todo .finish.end {
+  background-image: url("../images/finish-end.png");
+}
+.app-todo .edit {
+  display: none;
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  width: 28px;
+  height: 28px;
+  background: url("../images/todo-edit.png") no-repeat center center;
+}
+.app-todo .edit:hover {
+  background-image: url("../images/todo-edit-hover.png");
+}
+.app-todo .date {
+  position: absolute;
+  top: 53px;
+  left: 0;
+  width: 100%;
+  height: 54px;
+  padding-left: 16px;
+  border-bottom: 1px solid #ccc;
+  line-height: 54px;
+  background-color: #fafaee;
+}
+.app-todo .todo-content {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 112px 16px 4px 16px;
+}
+.app-todo .content-inner {
+  max-height: 100%;
+  overflow-y: auto;
+  font-size: 14px;
+}
+.app-todo .content-inner p {
+  margin: 6px 0;
 }

@@ -73,9 +73,22 @@ define(function (require, exports, module){
 			task.name = name;
 			store.setTask(cate, task);
 		},
-		getTodosByDate: function (tid, state=0){
+		getTodosByDate: function (tid, status){
 			var todos = store.findTodo(tid);
-			return todos && sortByDate(todos);
+			if (!todos) return;
+			if (status === undefined) {
+				return sortByDate(todos);
+			}
+			return sortByDate(findTodoByStatus(todos, status));
+			function findTodoByStatus (todos, status){
+				var result = [];
+				todos.forEach(function (todo){
+					if (!!status === todo.done) {
+						result.push(todo);
+					}
+				});
+				return result;
+			}
 			function isObjPro (arr, date){
 				for (var i=0, l=arr.length; i < l; i++) {
 					if (date === arr[i].date) return i;
@@ -102,7 +115,7 @@ define(function (require, exports, module){
 			}
 		},
 		createTodo: function (tid){
-			return store.setTodo(tid, {name: 'todo...', date: new Date(), content: '', done: false});
+			return store.setTodo(tid, {name: 'todo', date: new Date(), content: '', done: false});
 		},
 		clearTodo: function (tid, id){
 			return store.removeTodo(tid, id);
@@ -111,6 +124,15 @@ define(function (require, exports, module){
 			var todo = store.findTodo(tid, id);
 			if (!todo) return;
 			todo.name = name;
+			return store.setTodo(tid, todo);
+		},
+		getTodo: function (tid, id){
+			return store.findTodo(tid, id);
+		},
+		updateTodoContent: function (tid, id, value){
+			var todo = store.findTodo(tid, id);
+			if (!todo) return;
+			todo.content = value;
 			return store.setTodo(tid, todo);
 		}
 	}

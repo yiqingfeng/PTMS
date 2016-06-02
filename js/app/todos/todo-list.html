@@ -2,13 +2,13 @@
 	<li class="date"><%= obj[i].date %></li>
 	<% var todos = obj[i].todos %>
 	<% for(var j=0,jl=todos.length; j<jl; j++){ %>
-		<li class="task-c" data-id=<%= todos[j]._id %>>
+		<li class="todo" data-id=<%= todos[j]._id %>>
 			<div class="todo-view">
 				<div class="todo-name" title=<%= todos[j].name %>><%= todos[j].name %></div>
-				<a href="javascript:;" class="todo-edit"></a>
-				<a href="javascript:;" class="todo-destroy"></a>
+				<a href="javascript:;" class="edit j-todo-edit"></a>
+				<a href="javascript:;" class="destroy j-todo-destroy"></a>
 			</div>
-			<input type="text" class="todo-name-edit" value=<%= todos[j].name %>>
+			<input class="todo-rename" value=<%= todos[j].name %>>
 		</li>
 	<% } %>
 <% } %>

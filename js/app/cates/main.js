@@ -1,21 +1,13 @@
 define(function(require, exports, module) {
 	var root = window,
 		data = require('../data/data'),
+		bindEventOne = require('../data/util').bindEventOne,
 		cateTemps = [
 			require('./main-html'),
 			require('./cate-list-html'),
 			require('./add-cate-html'),
 			require('./add-task-html')
 		];
-
-	// No binding when there is this type of event
-	function bindEventOne(el ,type, callback){
-		var events = $._data(el, 'events');
-		if (events && events[type]) {
-			return;
-		}
-		$(el).on(type, callback);
-	}
 
 	var CateList = function(opts) {
 		this.opts = $.extend({
@@ -27,19 +19,25 @@ define(function(require, exports, module) {
 	CateList.prototype = {
 		init: function (){
 			var me = this;
-			$(me.$el).append(cateTemps[0]({todoNum: data.getAllTodosNum()}));
+			me.renderHtml();
+			me.events.on('todoChange:after', function (){
+				me.renderHtml();
+			});
+		},
+		renderHtml: function (){
+			var me = this;
+			$(me.$el).empty().append(cateTemps[0]({todoNum: data.getAllTodosNum()}));
 			me.queryCateList();
 			me.bindEvent();
 		},
 		// set global tid
 		setTid: function (tid){
-			var oldTid = root.PTMS.TID || "";
+			var oldTid = root.PTMS.TID || '';
 			if (oldTid === tid) {
 				return;
 			}
 			root.PTMS.TID = tid;
 			this.events.trigger('tidExchange:after');
-			console.log('tidExchange:after');
 		},
 		queryCateList: function (){
 			var cates = data.getTaskMenu();
