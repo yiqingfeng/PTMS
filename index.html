@@ -17,20 +17,7 @@
 		
 		</div>
 		<div id="app-todo" class="m-tasks">
-			<!-- <div class="app-todo">
-				<div class="todo-head">
-					<h2>todo 2</h2>
-					<a href="javascript:;" class="finish end"></a>
-					<a href="javascript:;" class="edit"></a>
-				</div>
-				<div class="date">任务日期：2015-4-10</div>
-				<div class="todo-content">
-					<div class="content-inner">
-						<p>asdasdasd</p>
-						<p>asdasdasd</p>
-					</div>
-				</div>
-			</div> -->
+
 		</div>
 	</section>
 
@@ -43,13 +30,7 @@
 	<script>
 		// 配置seajs
 		seajs.config({
-			base: './js/lib',
-			alias: {
-				// 为什么路径不能为jquery/1.10.1/jquery.js
-				// 'jquery': 'jquery/jquery/1.10.1/jquery.js',
-				// 'underscore': 'underscore/underscore.js'
-			},
-			// preload: ['underscore']
+			base: './js/lib'
 		});
 		// 加载入口模块
 		seajs.use('./js/app/main');

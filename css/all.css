@@ -1,3 +1,4 @@
+@import url(sprite/stylesheet.css);
 html,
 body,
 div,
@@ -107,50 +108,32 @@ ul {
   list-style-type: none;
 }
 .app-cates .cate .open {
-  background-image: url("../images/cate-open.png");
+  background-image: url("../css/sprite/cate-open.png");
 }
 .app-cates .cate .add-task {
   display: none;
   position: absolute;
   top: 6px;
   right: 50px;
-  width: 16px;
-  height: 16px;
-  background: url("../images/add.png") no-repeat center center;
-}
-.app-cates .cate .add-task:hover {
-  background-image: url("../images/add-hover.png");
 }
 .app-cates .cate .edit {
   display: none;
   position: absolute;
   top: 6px;
   right: 28px;
-  width: 16px;
-  height: 16px;
-  background: url("../images/edit.png") no-repeat center center;
-}
-.app-cates .cate .edit:hover {
-  background-image: url("../images/edit-hover.png");
 }
 .app-cates .cate .destroy {
   display: none;
   position: absolute;
   top: 6px;
   right: 6px;
-  width: 16px;
-  height: 16px;
-  background: url("../images/delete.png") no-repeat center center;
-}
-.app-cates .cate .destroy:hover {
-  background-image: url("../images/delete-hover.png");
 }
 .app-cates .cate-view {
   position: relative;
   padding-left: 50px;
   height: 28px;
   line-height: 28px;
-  background: url("../images/cate.png") no-repeat 28px center;
+  background: url("../css/sprite/cate.png") no-repeat 28px center;
   cursor: pointer;
 }
 .app-cates .cate-view:hover {
@@ -185,14 +168,14 @@ ul {
   list-style-type: none;
 }
 .app-cates .task .open {
-  background-image: url("../images/file-open.png");
+  background-image: url("../css/sprite/file-open.png");
 }
 .app-cates .task-view {
   position: relative;
   height: 28px;
   padding-left: 64px;
   line-height: 28px;
-  background: url("../images/file.png") no-repeat 44px center;
+  background: url("../css/sprite/file.png") no-repeat 44px center;
   cursor: pointer;
 }
 .app-cates .task-view span {
@@ -233,11 +216,8 @@ ul {
 }
 .app-cates .add-cate a {
   position: absolute;
-  top: 12px;
+  top: 14px;
   left: 18px;
-  width: 20px;
-  height: 20px;
-  background: url("../images/add1.png") no-repeat center center;
   cursor: pointer;
 }
 .app-cates .add-cate div {
@@ -317,24 +297,12 @@ ul {
   position: absolute;
   top: 6px;
   right: 28px;
-  width: 16px;
-  height: 16px;
-  background: url("../images/edit.png") no-repeat center center;
-}
-.app-todos .todo-view .edit:hover {
-  background-image: url("../images/edit-hover.png");
 }
 .app-todos .todo-view .destroy {
   display: none;
   position: absolute;
   top: 6px;
   right: 6px;
-  width: 16px;
-  height: 16px;
-  background: url("../images/delete.png") no-repeat center center;
-}
-.app-todos .todo-view .destroy:hover {
-  background-image: url("../images/delete-hover.png");
 }
 .app-todos .todo-rename {
   display: none;
@@ -356,11 +324,8 @@ ul {
 }
 .app-todos .add-todo a {
   position: absolute;
-  top: 12px;
+  top: 14px;
   left: 18px;
-  width: 20px;
-  height: 20px;
-  background: url("../images/add1.png") no-repeat center center;
   cursor: pointer;
 }
 .app-todos .add-todo div {
@@ -391,29 +356,14 @@ ul {
 .app-todo .finish {
   display: none;
   position: absolute;
-  top: 12px;
+  top: 9px;
   right: 68px;
-  width: 28px;
-  height: 28px;
-  background: url("../images/finish.png") no-repeat center center;
-}
-.app-todo .finish:hover {
-  background-image: url("../images/finish-hover.png");
-}
-.app-todo .finish.end {
-  background-image: url("../images/finish-end.png");
 }
 .app-todo .edit {
   display: none;
   position: absolute;
-  top: 12px;
+  top: 9px;
   right: 20px;
-  width: 28px;
-  height: 28px;
-  background: url("../images/todo-edit.png") no-repeat center center;
-}
-.app-todo .edit:hover {
-  background-image: url("../images/todo-edit-hover.png");
 }
 .app-todo .date {
   position: absolute;

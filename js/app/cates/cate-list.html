@@ -2,9 +2,9 @@
 <li class="cate" data-cid=<%= obj[i]._id %>>
 	<div class="cate-view">
 		<span class="cate-name" title=<%= obj[i].name %>><%= obj[i].name %></span><span><%= obj[i].todos? "("+obj[i].todos+")" : "" %></span>
-		<a class="add-task j-add-task" href="javascript:;"></a>
-		<a class="edit j-cate-edit" href="javascript:;"></a>
-		<a class="destroy j-cate-destroy" href="javascript:;"></a>
+		<a class="sprite sprite-add add-task j-add-task" href="javascript:;"></a>
+		<a class="sprite sprite-edit edit j-cate-edit" href="javascript:;"></a>
+		<a class="sprite sprite-delete destroy j-cate-destroy" href="javascript:;"></a>
 	</div>
 	<input class="cate-rename" value=<%= obj[i].name %>>
 	<ul class="task-lists">
@@ -13,8 +13,8 @@
 				<li class="task" data-tid=<%= obj[i].tasks[j]._id %>>
 					<div class="task-view">
 						<span class="task-name" title=<%= obj[i].tasks[j].name %>><%= obj[i].tasks[j].name %></span><span><%= obj[i].tasks[j].todos ? "("+obj[i].tasks[j].todos+")" : "" %></span>
-						<a class="edit j-task-edit" href="javascript:;"></a>
-						<a class="destroy j-task-destroy" href="javascript:;"></a>
+						<a class="sprite sprite-edit edit j-task-edit" href="javascript:;"></a>
+						<a class="sprite sprite-delete destroy j-task-destroy" href="javascript:;"></a>
 					</div>
 					<input class="task-rename" value=<%= obj[i].tasks[j].name %>>
 				</li>

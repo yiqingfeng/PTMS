@@ -1,9 +1,9 @@
 @import url(mixins/global.less);
-/* todo */
-.app-todo{
+/* 任务详情 */
+.app-task{
 	position: relative;
 	height: 100%;
-	.todo-head{
+	.task-head{
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -17,17 +17,32 @@
 			font-size: 16px;
 		}
 	}
-	.finish{
-		display: none;
+	.save{
+		display: block;
 		position: absolute;
-		top: 9px;
+		top: 12px;
 		right: 68px;
+		width: 26px;
+		height: 26px;
+		background: url("@{imagePath}complete.png") no-repeat center center/26px;
+		&:hover{
+			background: url("@{imagePath}complete-hover.png") no-repeat center center/26px;
+		}
 	}
 	.edit{
-		display: none;
+		display: block;
 		position: absolute;
-		top: 9px;
+		top: 12px;
 		right: 20px;
+		width: 26px;
+		height: 26px;
+		background: url("@{imagePath}edit.png") no-repeat center center/26px;
+		&:hover{
+			background: url("@{imagePath}edit-hover.png") no-repeat center center/26px;
+		}
+	}
+	a.editing{
+		background: url("@{imagePath}editing.png") no-repeat center center/26px;
 	}
 	.date{
 		position: absolute;
@@ -40,7 +55,7 @@
 		line-height: 54px;
 		background-color: #fafaee;
 	}
-	.todo-content{
+	.task-content{
 		box-sizing: border-box;
 		height: 100%;
 		padding: 112px 16px 4px 16px;

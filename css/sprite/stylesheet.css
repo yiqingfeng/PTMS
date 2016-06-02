@@ -1,0 +1,95 @@
+.sprite {
+    background-image: url(spritesheet.png);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-add {
+    width: 16px;
+    height: 16px;
+    background-position: -5px -5px;
+}
+
+.sprite-add:hover {
+    background-position: -31px -5px;
+}
+
+.sprite-add1 {
+    width: 16px;
+    height: 16px;
+    background-position: -57px -5px;
+}
+
+.sprite-add1:hover {
+    background-position: -83px -5px;
+}
+
+.sprite-cate {
+    width: 16px;
+    height: 16px;
+    background-position: -109px -5px;
+}
+
+.sprite-cate-open {
+    width: 16px;
+    height: 16px;
+    background-position: -5px -31px;
+}
+
+.sprite-delete {
+    width: 16px;
+    height: 16px;
+    background-position: -31px -31px;
+}
+
+.sprite-delete:hover {
+    background-position: -57px -31px;
+}
+
+.sprite-edit {
+    width: 16px;
+    height: 16px;
+    background-position: -83px -31px;
+}
+
+.sprite-edit:hover {
+    background-position: -109px -31px;
+}
+
+.sprite-file {
+    width: 16px;
+    height: 16px;
+    background-position: -5px -57px;
+}
+
+.sprite-file-open {
+    width: 16px;
+    height: 16px;
+    background-position: -31px -57px;
+}
+
+.sprite-finish {
+    width: 32px;
+    height: 32px;
+    background-position: -57px -57px;
+}
+
+.sprite-finish.end {
+    width: 32px;
+    height: 32px;
+    background-position: -135px -5px;
+}
+
+.sprite-finish:hover {
+    background-position: -135px -47px;
+}
+
+.sprite-todo-edit {
+    width: 33px;
+    height: 32px;
+    background-position: -5px -89px;
+}
+
+.sprite-todo-edit:hover {
+    background-position: -99px -89px;
+}
